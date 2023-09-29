@@ -683,8 +683,9 @@ GameObject:
   - component: {fileID: 2448693833960135863}
   - component: {fileID: 2448693833952981875}
   - component: {fileID: 2448693833456946012}
-  - component: {fileID: 2448693833456946015}
-  - component: {fileID: 2448693833456946014}
+  - component: {fileID: 708565185951813478}
+  - component: {fileID: 3238008907587099179}
+  - component: {fileID: 3360835962931130752}
   m_Layer: 0
   m_Name: BirdCompanion
   m_TagString: Untagged
@@ -745,7 +746,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2448693833456946015
+--- !u!114 &708565185951813478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -754,14 +755,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2448693833960358103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0640585339cc8aa40a2747c8bd5b5e57, type: 3}
+  m_Script: {fileID: 11500000, guid: 68c1e394ec2d6ff4797551696c48b64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 8
-  maxAcceleration: 6
-  targetRadius: 0.5
-  slowRadius: 5
---- !u!114 &2448693833456946014
+  target: {x: 0, y: 0, z: 0}
+  grid: {fileID: 0}
+--- !u!114 &3238008907587099179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448693833960358103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b961d4059558fe489c4d57718f679f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 0
+  targetRadius: 0
+  slowRadius: 0
+  currentVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &3360835962931130752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -773,10 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f86a408b92315468886fd0a3883d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCharacter: {fileID: 0}
-  frontOffset: -0.5
-  rightOffset: 0.5
-  height: 1.5
+  targetObject: {fileID: 0}
 --- !u!1 &2448693833960358105
 GameObject:
   m_ObjectHideFlags: 0
