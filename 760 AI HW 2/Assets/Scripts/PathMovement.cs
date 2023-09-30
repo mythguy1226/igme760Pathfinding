@@ -7,16 +7,16 @@ public class PathMovement : MonoBehaviour
 	// Public fields
 	public float maxSpeed;
 	public float targetRadius;
-	public float slowRadius;
-	public Vector3 currentVelocity;
 	
-	// Reference to pathfinding component
+	// Reference to pathfinding component and rigidbody
 	AStar pathFinder;
+	public Rigidbody rb;
 
     // Get the pathfinding component to reference path
     void Start()
     {
 		pathFinder = GetComponent<AStar>();
+		rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -53,23 +53,13 @@ public class PathMovement : MonoBehaviour
 			// enough to your destination
 			if (distance <= targetRadius)
 			{
-				currentVelocity = new Vector3();
+				rb.velocity = new Vector3();
 				return;
 			}
 
 			// Init target values
-			float targetSpeed = 0;
 			Vector3 targetVelocity = new Vector3();
-
-			// Calculate speed when outside of slow radius
-			if (distance > slowRadius)
-			{
-				targetSpeed = maxSpeed;
-			}
-			else // When inside slow radius
-			{
-				targetSpeed = maxSpeed * (distance / slowRadius);
-			}
+			float targetSpeed = maxSpeed;
 
 			// Calculate the target velocity
 			targetVelocity = direction.normalized * targetSpeed;
@@ -78,8 +68,7 @@ public class PathMovement : MonoBehaviour
 			FaceTarget(targetVelocity);
 
 			// Update position based on velocity
-			transform.position += targetVelocity;
-			currentVelocity = targetVelocity;
+			rb.velocity = targetVelocity;
 		}
 	}
 
@@ -91,6 +80,8 @@ public class PathMovement : MonoBehaviour
 			return;
 
 		// Set rotation towards velocity direction
-		transform.rotation = Quaternion.LookRotation(velocity.normalized, transform.up);
+		transform.rotation = Quaternion.LookRotation(
+			new Vector3(velocity.normalized.x, 0.0f, velocity.normalized.z),
+			transform.up);
 	}
 }

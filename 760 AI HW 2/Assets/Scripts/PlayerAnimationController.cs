@@ -26,6 +26,6 @@ public class PlayerAnimationController : MonoBehaviour
     void Update()
     {
         // Update speed hash with current speed
-        animator.SetFloat(speedHash, movementControls.currentVelocity.magnitude * 100);
+        animator.SetFloat(speedHash, movementControls.rb.velocity.magnitude / movementControls.maxSpeed);
     }
 }

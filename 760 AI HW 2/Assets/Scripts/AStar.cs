@@ -98,11 +98,14 @@ public class AStar : MonoBehaviour
         targetPath = path;
     }
 
+    // Method for calculating distance between nodes
     int GetDistance(Node nodeA, Node nodeB)
     {
+        // Get the distance values between the nodes
         int distX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
         int distY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
 
+        // Cases for return values
         if (distX > distY)
             return 14 * distY + 10 * (distX - distY);
 

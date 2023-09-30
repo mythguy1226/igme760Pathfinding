@@ -28,7 +28,7 @@ public class TargetMarker : MonoBehaviour
         Vector3 offset = new Vector3(0.0f, 2.0f, 0.0f);
 
         // Moving
-        if (movementControls.currentVelocity.magnitude > 0)
+        if (movementControls.rb.velocity.magnitude > 0)
         {
             transform.position = pathFinder.target;
         }
